@@ -19,22 +19,23 @@ def word_count(words):
     return len(word_amount)
 
 def lowercase_words(words):
-    lowercase_words = words.lower()
-    return lowercase_words
+    lowercase = words.lower()
+    lowercase_words = []
+    for i in range(len(lowercase)):
+        if lowercase[i].isalpha():
+            lowercase_words.append(lowercase[i])
+    return lowercase_words 
 
 def character_list(words):
     character_dict = {
     }
     character_list = list(lowercase_words(words))
     character_list.sort()
-    unwanted = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "!", ".", ",", "?", "/", "'", "_", "@", "#", "$", "%", "^", "&", "*", "(", ")", '"', "[", "]", "{", "}", ":", ";" ] 
     for i in range(len(character_list))[1::]:
         if character_list[i] in character_dict:
             character_dict[(character_list[i])] += 1
         else:
             character_dict[(character_list[i])] = 1
-    for char in unwanted:
-        character_dict.pop(char, None)
     return character_dict
 
 def characters_total(words):
